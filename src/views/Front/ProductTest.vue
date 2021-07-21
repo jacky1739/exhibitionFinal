@@ -47,14 +47,14 @@
               </div>
             </div>
             <div class="col-6">
-              <a href="./checkout.html" class="text-nowrap btn btn-secondary w-100" @click.prevent="addToCart" :class="{ disabled : loadingStatus.loadingItem}">加入購物車</a>
+              <a href="./checkout.html" class="text-nowrap btn btn-secondary w-100" @click.prevent="addToCart" :class="{ disabled : loadingStatus.loadingItem }">加入購物車</a>
             </div>
           </div>
         </div>
       </div>
       <div class="row my-4">
         <div class="col-md-5">
-          <p>{{ product.description }}</p>
+          <p class="font-size-light">{{ product.description }}</p>
         </div>
       </div>
       <h3 class="fw-bold">{{ product.content }}</h3>
