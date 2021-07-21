@@ -52,7 +52,7 @@ const routes = [
     component: () => import('@/views/Front/NotFound.vue')
   },
   {
-    path: '/producttest',
+    path: '/producttest/:id',
     name: 'producttest',
     component: () => import('@/views/Front/ProductTest.vue')
   }
