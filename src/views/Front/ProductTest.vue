@@ -24,7 +24,8 @@
               <span class="sr-only">Next</span>
             </a>
           </div> -->
-          <img class="checkOut-image" :src="product.imageUrl" alt="...">
+          <img class="checkout-img" :src="product.imagesUrl[1]" alt="...">
+          <!-- <img class="checkOut-image" :src="product.imageUrl" alt="..."> -->
         </div>
         <div class="col-md-6">
           <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
@@ -63,54 +64,35 @@
           <div class="swiper-slide">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="product.imagesUrl[0]" class="card-img-top rounded-0" alt="...">
-              <a href="#" class="text-dark">
-              </a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="card-img-top rounded-0" alt="...">
-              <a href="#" class="text-dark">
-              </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">NT$1,080 <span class="text-muted "><del>NT$1,200</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="card border-0 mb-4 position-relative position-relative">
-              <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="card-img-top rounded-0" alt="...">
-              <a href="#" class="text-dark">
-              </a>
+              <img :src="product.imagesUrl[2]" class="card-img-top rounded-0" alt="...">
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">NT$1,080 <span class="text-muted "><del>NT$1,200</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="card border-0 mb-4 position-relative position-relative">
-              <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="card-img-top rounded-0" alt="...">
-              <a href="#" class="text-dark">
-              </a>
+              <img :src="product.imagesUrl[3]" class="card-img-top rounded-0" alt="...">
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">NT$1,080 <span class="text-muted "><del>NT$1,200</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="card border-0 mb-4 position-relative position-relative">
-              <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="card-img-top rounded-0" alt="...">
-              <a href="#" class="text-dark">
-              </a>
+              <img :src="product.imagesUrl[4]" class="card-img-top rounded-0" alt="...">
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">NT$1,080 <span class="text-muted "><del>NT$1,200</del></span></p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
