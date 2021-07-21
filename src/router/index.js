@@ -14,11 +14,6 @@ const routes = [
     ]
   },
   {
-    path: '/product/:id',
-    name: 'product',
-    component: () => import('@/views/Front/Product.vue')
-  },
-  {
     path: '/shopcart',
     component: () => import('@/views/Front/ShopCart.vue')
   },
@@ -52,9 +47,9 @@ const routes = [
     component: () => import('@/views/Front/NotFound.vue')
   },
   {
-    path: '/producttest/:id',
-    name: 'producttest',
-    component: () => import('@/views/Front/ProductTest.vue')
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('@/views/Front/Product.vue')
   }
 ]
 

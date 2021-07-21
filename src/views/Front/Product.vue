@@ -1,59 +1,110 @@
 <template>
-  <FrontNavBar />
   <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-12 mt-5">
-        <div class="mb-3">
-          <div class="row g-0">
-              <div class="col-md-6">
-                <img class="checkOut-image" :src="product.imageUrl" alt="...">
+      <FrontNavBar />
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
               </div>
-              <div class="col-md-6">
-                <div class="card-body">
-                  <h5 class="card-title">{{ product.title }}</h5>
-                  <p class="card-text">{{ product.description }}</p>
-                  <p class="card-text"><small class="text-muted">$ {{ product.price }}</small></p>
-                  <div class="form-group">
-                    <label class="col-md-10">數量</label>
-                      <div class="col-md-10">
-                      <div class="input-group">
-                        <span class="input-group-addon"><button class="btn btn-secondary" @click.prevent="minus" type="button"><i class="bi bi-dash"></i></button></span>
-                        <input type="number" placeholder="1" @keyup.enter="toPurchase" v-model.number="count" class="form-control">
-                        <span><button class="btn btn-secondary mr-1" @click.prevent="add" type="button"><i class="bi bi-plus"></i></button></span>
-                        <span><button class="btn btn-secondary add-cart" type="button" @click.prevent="addToCart" :disabled="loadingStatus.loadingItem">加入購物車</button></span>
-                      </div>
-                    </div>
-                  </div>
+              <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div> -->
+          <img class="checkout-img" :src="product.imagesUrl[1]" alt="...">
+          <!-- <img class="checkOut-image" :src="product.imageUrl" alt="..."> -->
+        </div>
+        <div class="col-md-6">
+          <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
+          <p class="mb-0 text-muted text-end"><del>NT$ {{ product.origin_price }}</del></p>
+          <p class="h4 fw-bold text-end">NT$ {{ product.price }}</p>
+          <div class="row align-items-center">
+            <div class="col-6">
+              <div class="input-group my-3 bg-light rounded">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary border-0 py-2" @click.prevent="minus" type="button" id="button-addon1">
+                    <i class="bi bi-dash"></i>
+                  </button>
+                </div>
+                <input type="number" class="form-control border-0 text-center my-auto shadow-none bg-light" v-model.number="count" placeholder="" readonly="readonly" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary border-0 py-2" @click.prevent="add" type="button" id="button-addon2">
+                    <i class="bi bi-plus"></i>
+                  </button>
                 </div>
               </div>
+            </div>
+            <div class="col-6">
+              <a href="./checkout.html" class="text-nowrap btn btn-secondary w-100" @click.prevent="addToCart" :class="{ disabled : loadingStatus.loadingItem }">加入購物車</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row m0-auto d-flex justify-content-center">
-      <div class="col-md-8">
-        <div class="mb-3">
-          <div class="row g-0">
-            <div class="col-md-8">
-              <img :src="product.imagesUrl[0]" class="card-image">
+      <div class="row my-4">
+        <div class="col-md-5">
+          <p class="font-size-light">{{ product.description }}</p>
+        </div>
+      </div>
+      <h3 class="fw-bold">{{ product.content }}</h3>
+      <div class="swiper-container mt-4 mb-5">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="card border-0 mb-4 position-relative position-relative">
+              <img :src="product.imagesUrl[0]" class="card-img-top rounded-0" alt="...">
+              <div class="card-body p-0">
+                <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
+                <p class="text-muted mt-3"></p>
+              </div>
             </div>
-            <div class="col-md-4 d-flex align-items-center">
-              <div class="card-body">
-                <h5 class="card-title d-flex align-items-center font-size-light card-content">{{ product.content }}</h5>
+          </div>
+          <div class="swiper-slide">
+            <div class="card border-0 mb-4 position-relative position-relative">
+              <img :src="product.imagesUrl[2]" class="card-img-top rounded-0" alt="...">
+              <div class="card-body p-0">
+                <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
+                <p class="text-muted mt-3"></p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card border-0 mb-4 position-relative position-relative">
+              <img :src="product.imagesUrl[3]" class="card-img-top rounded-0" alt="...">
+              <div class="card-body p-0">
+                <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
+                <p class="text-muted mt-3"></p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card border-0 mb-4 position-relative position-relative">
+              <img :src="product.imagesUrl[4]" class="card-img-top rounded-0" alt="...">
+              <div class="card-body p-0">
+                <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
+                <p class="text-muted mt-3"></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <GassYouLike />
-  <Footer />
+    <Footer />
 </template>
 
 <script>
 import FrontNavBar from '@/components/FrontNavBar.vue'
-import GassYouLike from '@/components/GassYouLike.vue'
 import Footer from '@/components/Footer.vue'
 
 import emitter from '../../assets/javascript/emitter'
@@ -70,7 +121,7 @@ export default {
       }
     }
   },
-  components: { GassYouLike, Footer, FrontNavBar },
+  components: { FrontNavBar, Footer },
   methods: {
     add () {
       console.log('add')
@@ -103,7 +154,7 @@ export default {
       })
     },
     addToCart () {
-      console.log('click')
+    //   console.log('click')
       this.loadingStatus.loadingItem = true
       const cart = {
         product_id: this.product.id,
