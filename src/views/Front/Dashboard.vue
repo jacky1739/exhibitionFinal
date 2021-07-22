@@ -2,7 +2,7 @@
   <FrontNavBar />
   <router-view />
   <GassYouLike />
-  <Products :tospecial = "products" />
+  <Products class="mb-5" :tospecial = "products" />
   <Footer />
 </template>
 

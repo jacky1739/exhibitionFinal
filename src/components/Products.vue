@@ -1,21 +1,11 @@
 <template>
   <div class="container">
     <div class="row" id="toProducts">
-      <h2 class="font-size-bold mb-md-4 text-center">本期所有展覽...</h2>
+      <h2 class="font-size-bold mb-4 text-center">本期所有展覽...</h2>
       <section class="category">
-        <!-- <div class="container-fluid">
-          <ul class="row d-flex">
-            <li>
-              <button class="btn btn-secondary">全部的展覽</button>
-            </li>
-            <li class="d-flex" v-for="item in categories" :key="item">
-              <button type="button" class="btn btn-secondary" @click.prevent="selectCategory = item">{{ item }}</button>
-            </li>
-          </ul>
-        </div> -->
         <div class="container">
           <div class="row">
-            <ul class="d-flex justify-content-center category mb-4">
+            <ul class="d-flex justify-content-center category mb-4 border-bottom border-secondary mb-5 flex-wrap">
               <li>
                 <button class="btn btn-secondary category-btn rounded-0" @click.prevent="addWordToData('all')">全部展覽</button>
               </li>
@@ -107,7 +97,7 @@ export default {
       })
       this.categories = [...categories]
     },
-    addWordToData (whatKind = 'all') {
+    addWordToData (whatKind) {
       const filterData = new Set()
       console.log(whatKind)
       switch (whatKind) {

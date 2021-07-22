@@ -41,11 +41,8 @@
     }
 }
 
-// .category {
-//     @media (max-width: 375px) {
-//         .category-btn {
-//             flex-wrap: wrap;
-//             width: 50%;
-//         }
-//     }
-// }
+.category-btn {
+    @media(max-width: 375px) {
+        width: 150px;
+    }
+}

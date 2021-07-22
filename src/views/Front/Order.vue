@@ -63,7 +63,7 @@
               <div class="w-100">
                 <div class="d-flex justify-content-between border-top pt-4">
                   <p class="font-size-Regular">總計</p>
-                  <p class="font-size-Regular text-danger">$ {{ totalPrice }}</p>
+                  <p class="font-size-Regular text-danger">$ {{ final_total }}</p>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default {
   data () {
     return {
       cart: {},
-      totalPrice: {},
+      final_total: {},
       user: {},
       forms: {
         user: {
@@ -134,7 +134,7 @@ export default {
         if (res.data.success) {
           // console.log(res)
           this.cart = res.data.data
-          this.totalPrice = res.data.data.final_total
+          this.final_total = res.data.data.final_total
         }
       }).catch(err => {
         alert(err.message)
