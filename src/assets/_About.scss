@@ -10,4 +10,7 @@
     background-position: bottom;
     height: 500px;
     background-size: cover;
+    @media (max-width: 375px) {
+        background-position: right;
+    }
 }

@@ -1,8 +1,8 @@
 <template>
   <FrontNavBar />
   <router-view />
-  <Products :tospecial = "products" data-aos="flip-left" />
   <GassYouLike />
+  <Products :tospecial = "products" data-aos="flip-left" />
   <Footer />
 </template>
 

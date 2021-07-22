@@ -6,7 +6,7 @@
           <h2 class="h2 font-color-secondary mb-4 font-size-bold">台北當代藝術展</h2>
           <p class="h3 font-color-secondary mb-4 font-size-Regular">01 JUN - 31 OCT</p>
           <div class="d-grid gap-2">
-            <a class="btn btn-outline-secondary rounded-pill font-color-secondary rounded-pill border-white" href="#/aboutus">關於我們</a>
+            <a class="btn btn-outline-secondary rounded-pill font-color-secondary rounded-pill border-white" href="#/about">關於我們</a>
           </div>
         </div>
       </div>
