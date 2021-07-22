@@ -1,8 +1,38 @@
 <template>
   <div class="container">
     <div class="row" id="toProducts">
-      <h2 class="font-size-bold mb-md-4">本期展覽...</h2>
-      <div class="col-md-12" v-for="item in allProducts" :key="item">
+      <h2 class="font-size-bold mb-md-4 text-center">本期所有展覽...</h2>
+      <section class="category">
+        <!-- <div class="container-fluid">
+          <ul class="row d-flex">
+            <li>
+              <button class="btn btn-secondary">全部的展覽</button>
+            </li>
+            <li class="d-flex" v-for="item in categories" :key="item">
+              <button type="button" class="btn btn-secondary" @click.prevent="selectCategory = item">{{ item }}</button>
+            </li>
+          </ul>
+        </div> -->
+        <div class="container">
+          <div class="row">
+            <ul class="d-flex justify-content-center category mb-4">
+              <li>
+                <button class="btn btn-secondary category-btn rounded-0" @click.prevent="addWordToData('all')">全部展覽</button>
+              </li>
+              <li>
+                <button class="btn btn-secondary category-btn rounded-0" @click.prevent="addWordToData('special')">特別展覽</button>
+              </li>
+              <li>
+                <button class="btn btn-secondary category-btn rounded-0" @click.prevent="addWordToData('hot')">熱門展覽</button>
+              </li>
+              <li>
+                <button class="btn btn-secondary category-btn rounded-0" @click.prevent="addWordToData('normal')">一般展覽</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div class="col-md-12" v-for="item in filterData" :key="item">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-md-4">
@@ -38,9 +68,12 @@ export default {
   data () {
     return {
       allProducts: [],
+      categories: [],
+      selectCategory: '',
       loadingStatus: {
         loadingItem: ''
-      }
+      },
+      filterData: []
     }
   },
   props: ['tospecial'],
@@ -66,12 +99,60 @@ export default {
       }).catch(err => {
         alert(err.message)
       })
+    },
+    getCategories () {
+      const categories = new Set()
+      this.allProducts.forEach(item => {
+        categories.add(item.category)
+      })
+      this.categories = [...categories]
+    },
+    addWordToData (whatKind = 'all') {
+      const filterData = new Set()
+      console.log(whatKind)
+      switch (whatKind) {
+        case 'all' :
+          this.filterData = this.tospecial
+          console.log(this.filterData)
+          break
+        case 'special' :
+          this.allProducts.forEach(item => {
+            if (item.category === '特別展覽') {
+              filterData.add(item)
+              this.filterData = [...filterData]
+            }
+          })
+          break
+        case 'hot' :
+          this.allProducts.forEach(item => {
+            if (item.category === '熱門展覽') {
+              filterData.add(item)
+              this.filterData = [...filterData]
+            }
+          })
+          break
+        case 'normal' :
+          this.allProducts.forEach(item => {
+            if (item.category === '一般展覽') {
+              filterData.add(item)
+              this.filterData = [...filterData]
+            }
+          })
+          break
+      }
     }
   },
   watch: {
     tospecial () {
       this.allProducts = this.tospecial
-      // console.log(this.allProducts)
+      this.filterData = this.tospecial
+      console.log(this.allProducts)
+      this.getCategories()
+    }
+  },
+  computed: {
+    filterProducts () {
+      return this.allProducts.filter(item => item.category.match(this.selectCategory))
     }
   }
 }

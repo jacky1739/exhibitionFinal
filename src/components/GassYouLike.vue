@@ -2,7 +2,7 @@
   <!-- 熱門展覽 一般展覽 特別展覽 -->
   <div class="container">
     <div class="row">
-      <h2 class="font-size-bold text-center mb-4">展覽種類</h2>
+      <h2 class="font-size-bold text-center mb-4">展覽種類說明</h2>
       <div class="col-md-4">
         <div class="like-1 mb-3"></div>
         <h2 class="text-center">熱門展覽</h2>

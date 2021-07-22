@@ -2,7 +2,7 @@
   <FrontNavBar />
   <router-view />
   <GassYouLike />
-  <Products :tospecial = "products" data-aos="flip-left" />
+  <Products :tospecial = "products" />
   <Footer />
 </template>
 
