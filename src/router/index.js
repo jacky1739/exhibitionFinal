@@ -34,14 +34,6 @@ const routes = [
     component: () => import('@/views/Admin/Admin.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/Front/NotFound.vue')
@@ -50,6 +42,11 @@ const routes = [
     path: '/product/:id',
     name: 'product',
     component: () => import('@/views/Front/Product.vue')
+  },
+  {
+    path: '/about',
+    name: 'aboutus',
+    component: () => import('@/views/Front/About.vue')
   }
 ]
 

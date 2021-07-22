@@ -22,13 +22,14 @@
 }
 
 .checkOut-image {
-    max-width: auto;
-    height: 450px;
+    max-width: 100%;
+    height: auto;
     margin: 0 auto;
-    @media(max-width: 768px) {
-        height: 350px;
-    }
+    // @media(max-width: 768px) {
+    //     height: 350px;
+    // }
 }
+
 
 .card-image {
     height: 350px;
@@ -60,5 +61,12 @@
     }
     .add-cart {
         margin-top: 20px;
+    }
+}
+
+.product-title {
+    @media(max-width: 768px) {
+        font-weight: bold;
+        font-size: 2rem;
     }
 }

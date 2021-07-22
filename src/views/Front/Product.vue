@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <FrontNavBar />
+      <FrontNavBar class="mb-5" />
       <div class="row align-items-center">
         <div class="col-md-6">
           <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -24,13 +24,13 @@
               <span class="sr-only">Next</span>
             </a>
           </div> -->
-          <img class="checkout-img" :src="product.imagesUrl[1]" alt="...">
+          <img class="checkOut-image" :src="product.imagesUrl[1]" alt="...">
           <!-- <img class="checkOut-image" :src="product.imageUrl" alt="..."> -->
         </div>
         <div class="col-md-6">
-          <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
-          <p class="mb-0 text-muted text-end"><del>NT$ {{ product.origin_price }}</del></p>
-          <p class="h4 fw-bold text-end">NT$ {{ product.price }}</p>
+          <h2 class="fw-bold h1 product-title mb-1">{{ product.title }}</h2>
+          <p class="mb-0 text-muted text-end text-sm-start"><del>NT$ {{ product.origin_price }}</del></p>
+          <p class="h4 fw-bold text-end text-sm-start">NT$ {{ product.price }}</p>
           <div class="row align-items-center">
             <div class="col-6">
               <div class="input-group my-3 bg-light rounded">
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="row my-4">
-        <div class="col-md-5">
+        <div class="col-md-6">
           <p class="font-size-light">{{ product.description }}</p>
         </div>
       </div>
@@ -66,7 +66,7 @@
               <img :src="product.imagesUrl[0]" class="card-img-top rounded-0" alt="...">
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                <p class="text-muted mt-3"></p>
+                <p class="text-muted mt-3">Lorem ipsum</p>
               </div>
             </div>
           </div>
