@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/coupon',
-    component: () => import('@/views/Admin/CouponTest.vue')
+    component: () => import('@/views/Admin/Coupon.vue')
   },
   {
     path: '/:pathMatch(.*)*',

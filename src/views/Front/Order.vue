@@ -67,10 +67,10 @@
                 </div>
               </div>
               <div class="w-100">
-                <label for="">請輸入morefun取得折扣</label>
+                <label for="couponInput" class="font-size-light">請輸入morefun取得折扣</label>
                 <div class="d-flex border-top pt-4 d-flex justify-content-center">
                   <div class="input-group my-3 bg-light rounded w-100">
-                    <input class="form-control border-dark" type="text" placeholder="請輸入優惠碼" v-model="couponCode">
+                    <input id="couponInput" class="form-control border-dark" type="text" placeholder="請輸入優惠碼" v-model="couponCode">
                     <button type="button" class="btn btn-secondary" @click="addCouponCode">套用優惠碼</button>
                   </div>
                   <p></p>
