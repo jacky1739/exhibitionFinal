@@ -71,12 +71,11 @@ export default {
   methods: {
     getOrder () {
       this.orderId = this.$route.params.orderId
-      console.log(this.orderId)
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.$http.get(url).then(res => {
         this.allProducts = res.data.order.products
         this.sum = res.data.order.total
-        console.log(res.data.order.is_paid)
+        console.log(res.data.order)
       }).catch(err => {
         alert(err.message)
       })

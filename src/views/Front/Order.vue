@@ -63,7 +63,17 @@
               <div class="w-100">
                 <div class="d-flex justify-content-between border-top pt-4">
                   <p class="font-size-Regular">總計</p>
-                  <p class="font-size-Regular text-danger">$ {{ final_total }}</p>
+                  <p class="font-size-Regular" :class="{ 'text-success': couponSuccess }">$ {{ final_total }}</p>
+                </div>
+              </div>
+              <div class="w-100">
+                <label for="">請輸入morefun取得折扣</label>
+                <div class="d-flex border-top pt-4 d-flex justify-content-center">
+                  <div class="input-group my-3 bg-light rounded w-100">
+                    <input class="form-control border-dark" type="text" placeholder="請輸入優惠碼" v-model="couponCode">
+                    <button type="button" class="btn btn-secondary" @click="addCouponCode">套用優惠碼</button>
+                  </div>
+                  <p></p>
                 </div>
               </div>
             </div>
@@ -95,7 +105,9 @@ export default {
         },
         messages: ''
       },
-      orderId: ''
+      orderId: '',
+      couponCode: '',
+      couponSuccess: false
     }
   },
   watch: {
@@ -116,7 +128,6 @@ export default {
         if (res.data.success) {
           this.orderId = res.data.orderId
           console.log(this.orderId)
-          // this.$swal('訂購成功!!')
           this.$router.push(`/checkout/${this.orderId}`)
         } else {
           this.$swal({
@@ -132,12 +143,27 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
       this.$http.get(url).then(res => {
         if (res.data.success) {
-          // console.log(res)
+          console.log(res.data.data)
           this.cart = res.data.data
           this.final_total = res.data.data.final_total
         }
       }).catch(err => {
         alert(err.message)
+      })
+    },
+    addCouponCode () {
+      console.log(this.couponCode)
+      const coupon = {
+        code: this.couponCode
+      }
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`
+      this.$http.post(url, { data: coupon }).then(res => {
+        console.log(res.data.success)
+        this.couponSuccess = true
+        this.getCartList()
+        this.$swal({
+          title: '價格以打折'
+        })
       })
     }
   },
