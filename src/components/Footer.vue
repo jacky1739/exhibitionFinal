@@ -21,11 +21,10 @@
       </div>
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start text-white">
         <div class="mb-md-0 mb-1">
-          <p class="mb-0">0987-560-828</p>
-          <p class="mb-0">jacky123789456@mail.com</p>
+          <p class="mb-0">09XX-XXX-XXX</p>
+          <p class="mb-0">XXXXXXX@gmail.com</p>
         </div>
-        <p class="mb-0">© 2021 All Rights Reserved. 所有圖片、內容為練習使用，無商業用途</p>
-        <!-- <p class="mb-0">所有圖片、內容為練習使用，無商業用途</p> -->
+        <p class="mb-0">© 2021 All Rights Reserved. 所有圖片、內容居為虛構練習使用，無商業用途</p>
       </div>
     </div>
   </div>

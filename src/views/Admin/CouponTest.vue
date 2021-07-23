@@ -18,7 +18,7 @@
           <th class="border-secondary">優惠券代碼</th>
           <th class="text-center border-secondary">折扣率</th>
           <th class="border-secondary">期限</th>
-          <th class="border-secondary">是否啟用</th>
+          <th class="border-secondary">啟用</th>
           <th class="border-secondary">操作</th>
         </tr>
       </thead>
@@ -28,35 +28,19 @@
           <td>{{ item.code }}</td>
           <td class="text-center">{{ item.percent }}</td>
           <td>{{ new Date(item.due_date).toLocaleString() }}</td>
-          <td width="200">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                type="checkbox"
-              />
-              <label class="form-check-label">
-                <span
-                  class="spinner-border spinner-border-sm me-2"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-              </label>
-            </div>
-          </td>
+          <td>
+            <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
+            <span v-else class="text-muted">未啟用</span>
+        </td>
           <td>
             <div class="btn-group">
-              <input
-                type="button"
-                value="刪除"
-                class="btn btn-outline-danger border-secondary"
-                @click="deleteCoupon(item.id)"
-              />
+              <input type="button" value="刪除" class="btn btn-outline-danger border-secondary" @click="deleteCoupon(item.id)"/>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <CouponModal ref="couponModal" :update="getCoupons"></CouponModal>
+    <CouponModal ref="couponModal" :coupon-data="coupon" @update="getCoupons"></CouponModal>
     <DelModal ref="deleteModal">
     </DelModal>
   </div>
@@ -72,7 +56,8 @@ export default {
       coupons: [],
       coupon: {
         title: '',
-        percent: 0,
+        is_enabled: 0,
+        percent: 100,
         code: ''
       },
       tempCoupon: {},
@@ -104,9 +89,9 @@ export default {
     openCouponModal () {
       console.log(this.$refs)
       this.$refs.couponModal.openModal()
-    },
-    openDeleteModal () {
-      console.log(this.$refs)
+      this.coupon = {
+        due_date: Math.floor(Date.now() / 1000)
+      }
     }
   },
   mounted () {
@@ -114,11 +99,6 @@ export default {
     this.$http.defaults.headers.common.Authorization = token
     this.getCoupons()
   },
-  components: { CouponModal, DelModal },
-  computed: {
-    filterData () {
-      return this.coupons.filter((item) => item.code.match(this.searchData))
-    }
-  }
+  components: { CouponModal, DelModal }
 }
 </script>

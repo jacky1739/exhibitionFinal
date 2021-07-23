@@ -11,7 +11,7 @@
       <tr>
         <th>名稱</th>
         <th>折扣百分比</th>
-        <th>到期日</th>
+        <th>日期</th>
         <th>是否啟用</th>
         <th>編輯</th>
       </tr>
@@ -38,8 +38,7 @@
       </tr>
       </tbody>
     </table>
-    <CouponModal :coupon="tempCoupon" :is-new="isNew" ref="couponModal"
-    @update-coupon="updateCoupon"/>
+    <CouponModal :coupon-data="tempCoupon" ref="couponModal" @update-coupon="updateCoupon" />
     <DelModal :item="tempCoupon" ref="delModal" @del-item="delCoupon"/>
   </div>
 </template>

@@ -4,10 +4,6 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            <span v-if="isNew">新增優惠卷</span>
-            <span v-else>編輯優惠卷</span>
-          </h5>
           <button type="button" class="btn-close"
                   data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -54,18 +50,7 @@
 import modalMixin from '@/mixins/modalMixin'
 
 export default {
-  props: {
-    coupon: {
-      type: Object,
-      default () {
-        return {}
-      }
-    },
-    isNew: {
-      type: Boolean,
-      default: false
-    }
-  },
+  props: ['couponData'],
   data () {
     return {
       tempCoupon: {
@@ -98,12 +83,13 @@ export default {
   },
   emits: ['update-coupon'],
   watch: {
-    coupon () {
-      this.tempCoupon = this.coupon
+    couponData (n) {
+      this.tempCoupon = this.couponData
       // 將時間格式改為 YYYY-MM-DD
-      const dateAndTime = new Date(this.tempCoupon.due_date * 1000)
-        .toISOString().split('T');
-      [this.due_date] = dateAndTime
+      const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
+      this.due_date = dateAndTime
+      console.log(this.due_date)
+      console.log(n)
     },
     due_date () {
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
