@@ -86,7 +86,7 @@ export default {
       this.isNew = isNew
       if (this.isNew) {
         this.tempCoupon = {
-          due_date: new Date().getTime() / 1000
+          due_date: Math.floor(new Date().getTime() / 1000)
         }
       } else {
         this.tempCoupon = { ...item }

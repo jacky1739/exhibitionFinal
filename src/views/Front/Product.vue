@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-      <FrontNavBar class="mb-5" />
+      <FrontNavBar class="mb-4" />
       <div class="row align-items-center">
+        <div class="mb-4">
+              <span class="input-group-addon"><button class="btn btn-secondary btn-sm" type="button" @click.prevent="backToProducts"><i class="bi bi-arrow-left"></i></button></span>
+              <span class="ml-1 font-size-light">返回</span>
+          </div>
         <div class="col-md-6">
           <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -61,40 +65,40 @@
       <h3 class="fw-bold">{{ product.content }}</h3>
       <div class="swiper-container mt-4 mb-5">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div class="swiper-slide mb-5">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="product.imagesUrl[0]" class="card-img-top rounded-0" alt="...">
-              <div class="card-body p-0">
+              <!-- <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
                 <p class="text-muted mt-3">Lorem ipsum</p>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide mb-5">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="product.imagesUrl[2]" class="card-img-top rounded-0" alt="...">
-              <div class="card-body p-0">
+              <!-- <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
                 <p class="text-muted mt-3"></p>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide mb-5">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="product.imagesUrl[3]" class="card-img-top rounded-0" alt="...">
-              <div class="card-body p-0">
+              <!-- <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
                 <p class="text-muted mt-3"></p>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide mb-5">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img :src="product.imagesUrl[4]" class="card-img-top rounded-0" alt="...">
-              <div class="card-body p-0">
+              <!-- <div class="card-body p-0">
                 <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
                 <p class="text-muted mt-3"></p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -123,6 +127,9 @@ export default {
   },
   components: { FrontNavBar, Footer },
   methods: {
+    backToProducts () {
+      this.$router.push('/')
+    },
     add () {
       console.log('add')
       this.count += 1
