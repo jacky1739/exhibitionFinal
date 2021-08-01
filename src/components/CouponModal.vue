@@ -25,7 +25,7 @@
             <input type="number" class="form-control" id="price"
             min="0" v-model.number="tempCoupon.percent" placeholder="請輸入折扣百分比">
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox"
                 :true-value="1"
@@ -35,7 +35,7 @@
                 是否啟用
               </label>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -86,7 +86,7 @@ export default {
     due_date () {
       // 轉換為 unix-timestamp
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
-      console.log('this.due_date', this.due_date)
+      console.log('this.due_date', typeof this.due_date)
       console.log('this.tempCoupon.due_date', this.tempCoupon.due_date)
       console.log(this.tempCoupon)
     }
