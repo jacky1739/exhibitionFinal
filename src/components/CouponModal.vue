@@ -25,17 +25,6 @@
             <input type="number" class="form-control" id="price"
             min="0" v-model.number="tempCoupon.percent" placeholder="請輸入折扣百分比">
           </div>
-          <!-- <div class="mb-3">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox"
-                :true-value="1"
-                :false-value="0"
-                v-model="tempCoupon.is_enabled" id="is_enabled">
-              <label class="form-check-label" for="is_enabled">
-                是否啟用
-              </label>
-            </div>
-          </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -64,7 +53,9 @@ export default {
   },
   data () {
     return {
-      tempCoupon: {},
+      tempCoupon: {
+        is_enabled: 1
+      },
       due_date: ''
     }
   },

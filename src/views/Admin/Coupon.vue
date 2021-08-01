@@ -80,9 +80,12 @@ export default {
     },
     updateCoupon (tempCoupon) {
       if (this.isNew) {
+        this.tempCoupon.is_enabled = 1
+        console.log(this.tempCoupon)
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
         this.$http.post(url, { data: tempCoupon }).then(res => {
           if (res.data.success) {
+            console.log(res)
             this.getCoupons()
             this.$refs.couponModal.hideModal()
           }
