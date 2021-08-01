@@ -88,6 +88,14 @@ export default {
             this.$refs.couponModal.hideModal()
           }
         })
+      } else {
+        const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
+        this.$http.put(url, { data: this.tempCoupon }).then((response) => {
+          if (response.data.success) {
+            this.getCoupons()
+            this.$refs.couponModal.hideModal()
+          }
+        })
       }
     },
     deleteCoupon (id) {
