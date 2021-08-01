@@ -39,7 +39,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-secondary" @click="addCoupon">更新優惠券
+          <button type="button" class="btn btn-secondary" @click="$emit('update-coupon', tempCoupon)">更新優惠券
           </button>
         </div>
       </div>
@@ -50,15 +50,21 @@
 import modalMixin from '@/mixins/modalMixin'
 
 export default {
-  props: ['couponData'],
+  props: {
+    coupon: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    isNew: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
-      tempCoupon: {
-        title: '',
-        percent: 0,
-        code: '',
-        is_enabled: 1
-      },
+      tempCoupon: {},
       due_date: ''
     }
   },
@@ -66,33 +72,23 @@ export default {
     click () {
       console.log(this.tempCoupon)
       console.log(this.due_date)
-    },
-    addCoupon () {
-      const couponObj = { data: { ...this.tempCoupon } }
-      console.log(couponObj)
-      const date = new Date()
-      couponObj.data.due_date = date.getTime()
-      couponObj.data.is_enabled = 1
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
-      this.$http.post(url, couponObj).then(res => {
-        console.log(res)
-        this.hideModal()
-        this.$emit('update')
-      })
     }
   },
   emits: ['update-coupon'],
   watch: {
-    couponData (n) {
-      this.tempCoupon = this.couponData
+    coupon () {
+      this.tempCoupon = this.coupon
       // 將時間格式改為 YYYY-MM-DD
       const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
       this.due_date = dateAndTime
       console.log(this.due_date)
-      console.log(n)
     },
     due_date () {
+      // 轉換為 unix-timestamp
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
+      console.log('this.due_date', this.due_date)
+      console.log('this.tempCoupon.due_date', this.tempCoupon.due_date)
+      console.log(this.tempCoupon)
     }
   },
   mixins: [modalMixin]

@@ -7,7 +7,7 @@
           type="button"
           value="新增"
           class="btn btn-secondary me-2"
-          @click="openCouponModal"
+          @click="openCouponModal(true)"
         />
       </div>
     </div>
@@ -27,12 +27,15 @@
           <td class="text-center">{{ item.title }}</td>
           <td>{{ item.code }}</td>
           <td class="text-center">{{ item.percent }}</td>
-          <td>{{ new Date(item.due_date).toLocaleString() }}</td>
+          <td>{{ new Date(item.due_date * 1000).toLocaleDateString() }}</td>
           <td>
             <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
             <span v-else class="text-muted">未啟用</span>
         </td>
           <td>
+            <div class="btn-group">
+              <input type="button" value="編輯" class="btn btn-outline-success border-success" @click="openCouponModal(false, item)"/>
+            </div>
             <div class="btn-group">
               <input type="button" value="刪除" class="btn btn-outline-danger border-secondary" @click="deleteCoupon(item.id)"/>
             </div>
@@ -40,7 +43,7 @@
         </tr>
       </tbody>
     </table>
-    <CouponModal ref="couponModal" :coupon-data="coupon" @update="getCoupons"></CouponModal>
+    <CouponModal ref="couponModal" :is-new="isNew" :coupon="tempCoupon" @update-coupon="updateCoupon"></CouponModal>
     <DelModal ref="deleteModal">
     </DelModal>
   </div>
@@ -54,14 +57,13 @@ export default {
   data () {
     return {
       coupons: [],
-      coupon: {
+      tempCoupon: {
         title: '',
         is_enabled: 0,
         percent: 100,
         code: ''
       },
-      tempCoupon: {},
-      couponId: ''
+      isNew: true
     }
   },
   methods: {
@@ -76,6 +78,18 @@ export default {
         this.swal('無法取得優惠券資料喔～快去看什麼問題吧！', 'error')
       })
     },
+    updateCoupon (tempCoupon) {
+      console.log('click', tempCoupon)
+      if (this.isNew) {
+        const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
+        this.$http.post(url, { data: tempCoupon }).then(res => {
+          if (res.data.success) {
+            this.getCoupons()
+            this.$refs.couponModal.hideModal()
+          }
+        })
+      }
+    },
     deleteCoupon (id) {
       console.log(id)
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${id}`
@@ -86,12 +100,16 @@ export default {
         this.swal('無法刪除資料喔～快去看什麼問題吧！', 'error')
       })
     },
-    openCouponModal () {
-      console.log(this.$refs)
-      this.$refs.couponModal.openModal()
-      this.coupon = {
-        due_date: Math.floor(Date.now() / 1000)
+    openCouponModal (isNew, item) {
+      this.isNew = isNew
+      if (this.isNew) {
+        this.tempCoupon = {
+          due_date: new Date().getTime() / 1000
+        }
+      } else {
+        this.tempCoupon = { ...item }
       }
+      this.$refs.couponModal.openModal()
     }
   },
   mounted () {
