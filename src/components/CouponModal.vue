@@ -71,8 +71,8 @@ export default {
       this.tempCoupon = this.coupon
       // 將時間格式改為 YYYY-MM-DD
       const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T')
-      this.due_date = dateAndTime
-      console.log(this.tempCoupon.due_date)
+      this.due_date = dateAndTime[0]
+      console.log(this.due_date)
     },
     due_date () {
       // 轉換為 unix-timestamp
