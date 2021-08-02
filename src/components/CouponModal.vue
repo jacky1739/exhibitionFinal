@@ -77,8 +77,6 @@ export default {
     due_date () {
       // 轉換為 unix-timestamp
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
-      // console.log('this.due_date', this.due_date)
-      // console.log('this.tempCoupon.due_date', this.tempCoupon.due_date)
       console.log(this.tempCoupon.due_date)
     }
   },
