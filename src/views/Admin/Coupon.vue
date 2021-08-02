@@ -59,7 +59,7 @@ export default {
       coupons: [],
       tempCoupon: {
         title: '',
-        is_enabled: 0,
+        is_enabled: 1,
         percent: 100,
         code: ''
       },
@@ -79,14 +79,21 @@ export default {
       })
     },
     updateCoupon (tempCoupon) {
-      console.log('click', tempCoupon)
       if (this.isNew) {
+        // const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
+        // this.$http.post(url, { data: tempCoupon }).then(res => {
+        //   if (res.data.success) {
+        //     this.getCoupons()
+        //     this.$refs.couponModal.hideModal()
+        //     console.log(res.data.success)
+        //   }
+        // })
+        this.tempCoupon.is_enabled = 1
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`
         this.$http.post(url, { data: tempCoupon }).then(res => {
-          if (res.data.success) {
-            this.getCoupons()
-            this.$refs.couponModal.hideModal()
-          }
+          this.getCoupons()
+          this.$refs.couponModal.hideModal()
+          console.log(res)
         })
       } else {
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
