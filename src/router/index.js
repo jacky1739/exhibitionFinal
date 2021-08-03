@@ -18,6 +18,11 @@ const routes = [
     component: () => import('@/views/Front/ShopCart.vue')
   },
   {
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('@/views/Front/Product.vue')
+  },
+  {
     path: '/order',
     component: () => import('@/views/Front/Order.vue')
   },
@@ -41,11 +46,6 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/Front/NotFound.vue')
-  },
-  {
-    path: '/product/:id',
-    name: 'product',
-    component: () => import('@/views/Front/Product.vue')
   },
   {
     path: '/about',
